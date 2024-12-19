@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random number</title>
+</head>
+<body>
+    <h2>Write a JavaScript program to add items to a blank array and display them.</h2>
+    <input type="text" id="itemInput" placeholder="Enter an item">
+    <button onclick="addItem()">Add</button>
+    <button onclick="displayItems()">Display</button>
+    <hr>
+    <div id="output"></div>
+
+    <h2>rand num</h2>
+    <button onclick="playGuessingGame()">play</button>
+
+    <script>
+        const items = []; // Initialize a blank array
+
+        function addItem() {
+            const input = document.getElementById("itemInput").value; // Get input value
+            if (input) {
+                items.push(input); // Add input to array
+                document.getElementById("itemInput").value = ""; // Clear the input field
+                alert("Item added successfully!");
+            } else {
+                alert("Please enter a value.");
+            }
+        }
+    
+
+        function displayItems() {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = ""; // Clear previous output
+
+            items.forEach((item, index) => {
+                const element = document.createElement("p");
+                element.textContent = `Element ${index + 1} = ${item}`;
+                outputDiv.appendChild(element); // Add each item to the output div
+            });
+        }
+
+        function playGuessingGame() {
+            // Generate a random integer between 1 and 10
+            const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+            // Prompt the user to guess the number
+            const userGuess = parseInt(prompt("Guess a number between 1 and 10: "), 10);
+
+            // Check if the user's guess matches the random number
+            if (userGuess === randomNumber) {
+                alert("Good Work");
+            } else {
+                alert("Not matched.");
+            }
+            }
+
+    </script>
+</body>
+</html>
